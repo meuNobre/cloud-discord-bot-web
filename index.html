@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iCloud Bot - Automação Inteligente para Comunidades Discord</title>
+  <meta name="description" content="Bot Discord especializado em automatizar processos de RH e gestão de comunidades gaming. Desenvolvido por Nobre para resolver problemas reais de servidores como Hylex.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☁️</text></svg>">
+  
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="dark-theme">
+  <!-- Aurora Background -->
+  <div class="aurora-background">
+    <div class="aurora-1"></div>
+    <div class="aurora-2"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <div class="logo-text">
+            <h1>iCloud Bot</h1>
+            <span>Automação Inteligente</span>
+          </div>
+        </div>
+
+        <nav class="nav desktop-nav">
+          <a href="#status" class="nav-link">Status</a>
+          <a href="#commands" class="nav-link">Comandos</a>
+          <a href="#features" class="nav-link">Funcionalidades</a>
+          <a href="#about" class="nav-link">Sobre</a>
+          <a href="/pages/sobre.html" class="nav-link">Desenvolvedor</a>
+          <a href="/pages/servicos.html" class="nav-link">Contratar</a>
+          <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+            <i class="fas fa-sun theme-icon-sun"></i>
+            <i class="fas fa-moon theme-icon-moon"></i>
+          </button>
+        </nav>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-content">
+      <button class="mobile-menu-close" id="mobile-menu-close">
+        <i class="fas fa-times"></i>
+      </button>
+      <nav class="mobile-nav">
+        <a href="#status" class="nav-link">Status</a>
+        <a href="#commands" class="nav-link">Comandos</a>
+        <a href="#features" class="nav-link">Funcionalidades</a>
+        <a href="#about" class="nav-link">Sobre</a>
+        <a href="/pages/sobre.html" class="nav-link">Desenvolvedor</a>
+        <a href="/pages/servicos.html" class="nav-link">Contratar</a>
+        <button id="theme-toggle-mobile" class="theme-toggle mobile">
+          <i class="fas fa-sun theme-icon-sun"></i>
+          <i class="fas fa-moon theme-icon-moon"></i>
+          <span>Alternar Tema</span>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title animate-fade-up">
+            <span class="gradient-text">iCloud Bot</span>
+          </h1>
+          <p class="hero-subtitle animate-fade-up" style="--delay: 0.2s">
+            Automação inteligente para comunidades Discord. Desenvolvido para resolver problemas reais de gestão de RH e processos seletivos em servidores gaming como Hylex.
+          </p>
+          <div class="hero-buttons animate-fade-up" style="--delay: 0.4s">
+            <a href="https://github.com/meuNobre" class="btn btn-secondary" target="_blank">
+              <i class="fab fa-github"></i>
+              Ver no GitHub
+            </a>
+          </div>
+          <img id="bot-avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Crect width='200' height='200' fill='%23e2e8f0'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%2364748b'%3EBot Avatar%3C/text%3E%3C/svg%3E" alt="iCloud Bot Avatar" class="bot-avatar">
+        </div>
+      </div>
+    </section>
+
+    <!-- Status Section -->
+    <section id="status" class="status-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Status do Sistema</h2>
+          <p class="section-subtitle">Monitoramento em tempo real do iCloud Bot</p>
+        </div>
+
+        <div class="stats-grid">
+          <!-- Status Card -->
+          <div class="stat-card status-card animate-slide-up">
+            <div class="stat-icon status-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Status</h3>
+              <div class="status-indicator">
+                <div id="bot-status" class="status offline">
+                  <div class="status-dot"></div>
+                  <span class="status-text">Carregando...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Servers Card -->
+          <div class="stat-card servers-card animate-slide-up" style="--delay: 0.1s">
+            <div class="stat-icon servers-icon">
+              <i class="fas fa-server"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Servidores</h3>
+              <div id="guild-count" class="stat-number">0</div>
+            </div>
+          </div>
+
+          <!-- Active Tickets Card -->
+          <div class="stat-card tickets-card animate-slide-up" style="--delay: 0.2s">
+            <div class="stat-icon tickets-icon">
+              <i class="fas fa-ticket-alt"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Tickets Ativos</h3>
+              <div id="tickets-count" class="stat-number">0</div>
+            </div>
+          </div>
+
+          <!-- Commands Card -->
+          <div class="stat-card commands-card animate-slide-up" style="--delay: 0.3s">
+            <div class="stat-icon commands-icon">
+              <i class="fas fa-terminal"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Comandos</h3>
+              <div id="commands-count" class="stat-number">0</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section id="commands" class="commands-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Lista de Comandos</h2>
+          <p class="section-subtitle">Todos os comandos disponíveis do bot</p>
+        </div>
+
+        <div class="commands-container">
+          <div class="commands-header">
+            <div class="commands-title">
+              <i class="fas fa-terminal"></i>
+              Comandos Disponíveis
+              <span id="commands-badge" class="badge">0</span>
+            </div>
+            <p class="commands-subtitle">Lista completa de todos os comandos slash do bot</p>
+          </div>
+
+          <div class="commands-list-container">
+            <!-- Loading State -->
+            <div id="commands-loading" class="loading-state" style="display: none;">
+              <div class="loading-spinner"></div>
+              <p>Carregando comandos...</p>
+            </div>
+
+            <!-- Commands List -->
+            <div id="commands-list" class="commands-list" style="display: none;"></div>
+
+            <!-- Empty State -->
+            <div id="commands-empty" class="empty-state" style="display: none;">
+              <i class="fas fa-terminal"></i>
+              <h3>Nenhum comando disponível</h3>
+              <p>Os comandos aparecerão aqui quando o bot estiver online</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Funcionalidades Principais</h2>
+          <p class="section-subtitle">Soluções desenvolvidas para resolver problemas reais de gestão de comunidades</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card animate-slide-up">
+            <div class="feature-icon invite-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Sistema de Convites Inteligente</h3>
+              <p><strong>/convidar-processo</strong> - Envia convites personalizados com botões interativos. Cada convite é único, mantendo histórico limpo e organizado para processos seletivos.</p>
+            </div>
+          </div>
+
+          <div class="feature-card animate-slide-up" style="--delay: 0.1s">
+            <div class="feature-icon welcome-icon">
+              <i class="fas fa-hand-wave"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Boas-vindas Automatizadas</h3>
+              <p>Sistema completo de recepção que cria automaticamente tickets privados por DM e threads de suporte, eliminando trabalho manual da equipe.</p>
+            </div>
+          </div>
+
+          <div class="feature-card animate-slide-up" style="--delay: 0.2s">
+            <div class="feature-icon panel-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Painel de Controle Executivo</h3>
+              <p>Dashboard completo para administradores com controle total do sistema, estatísticas em tempo real e opções de manutenção avançadas.</p>
+            </div>
+          </div>
+
+          <div class="feature-card animate-slide-up" style="--delay: 0.3s">
+            <div class="feature-icon automation-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Automação de RH</h3>
+              <p>Elimina processos manuais repetitivos como triagem de membros, seleção de candidatos e criação de tópicos para testes e entrevistas.</p>
+            </div>
+          </div>
+
+          <div class="feature-card animate-slide-up" style="--delay: 0.4s">
+            <div class="feature-icon gaming-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Especializado em Gaming</h3>
+              <p>Desenvolvido especificamente para comunidades de jogos, especialmente servidores de Minecraft, com base na experiência real no servidor Hylex.</p>
+            </div>
+          </div>
+
+          <div class="feature-card animate-slide-up" style="--delay: 0.5s">
+            <div class="feature-icon efficiency-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="feature-content">
+              <h3>Máxima Eficiência</h3>
+              <p>Economiza horas semanais de trabalho da equipe, reduz erros humanos e melhora significativamente a experiência dos usuários.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Sobre o iCloud Bot</h2>
+          <p class="section-subtitle">A história por trás da criação</p>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text">
+            <div class="about-item animate-slide-up">
+              <div class="about-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="about-info">
+                <h3>Origem do Projeto</h3>
+                <p>O iCloud Bot nasceu da experiência prática no setor de RH do servidor Hylex (Minecraft), onde processos manuais consumiam horas e eram propensos a erros humanos.</p>
+              </div>
+            </div>
+
+            <div class="about-item animate-slide-up" style="--delay: 0.1s">
+              <div class="about-icon">
+                <i class="fas fa-target"></i>
+              </div>
+              <div class="about-info">
+                <h3>Problemas Identificados</h3>
+                <p>Triagem manual de novos membros, seleção demorada de candidatos, recebimento desorganizado de formulários e criação repetitiva de tópicos para testes.</p>
+              </div>
+            </div>
+
+            <div class="about-item animate-slide-up" style="--delay: 0.2s">
+              <div class="about-icon">
+                <i class="fas fa-cogs"></i>
+              </div>
+              <div class="about-info">
+                <h3>Solução Inteligente</h3>
+                <p>Sistema completo de automação que mantém a qualidade dos processos seletivos enquanto elimina o trabalho repetitivo e reduz drasticamente o tempo necessário.</p>
+              </div>
+            </div>
+
+            <div class="about-item animate-slide-up" style="--delay: 0.3s">
+              <div class="about-icon">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div class="about-info">
+                <h3>Resultados Comprovados</h3>
+                <p>Melhoria significativa na eficiência da equipe, experiência do usuário aprimorada e processos mais organizados e arquiváveis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section class="tech-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Tecnologias Utilizadas</h2>
+          <p class="section-subtitle">Stack moderno e confiável</p>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-item animate-slide-up">
+            <i class="fab fa-js-square"></i>
+            <span>JavaScript</span>
+          </div>
+          <div class="tech-item animate-slide-up" style="--delay: 0.1s">
+            <i class="fab fa-node-js"></i>
+            <span>Node.js</span>
+          </div>
+          <div class="tech-item animate-slide-up" style="--delay: 0.2s">
+            <i class="fab fa-discord"></i>
+            <span>Discord.js</span>
+          </div>
+          <div class="tech-item animate-slide-up" style="--delay: 0.3s">
+            <i class="fas fa-database"></i>
+            <span>SQLite</span>
+          </div>
+          <div class="tech-item animate-slide-up" style="--delay: 0.4s">
+            <i class="fas fa-server"></i>
+            <span>Express.js</span>
+          </div>
+          <div class="tech-item animate-slide-up" style="--delay: 0.5s">
+            <i class="fas fa-chart-bar"></i>
+            <span>API REST</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Pronto para Automatizar sua Comunidade?</h2>
+          <p class="cta-subtitle">
+            Transforme a gestão do seu servidor Discord com soluções inteligentes e comprovadas. Desenvolvido por quem entende os desafios reais de comunidades gaming.
+          </p>
+          <div class="cta-buttons">
+            <a href="/pages/servicos.html" class="btn btn-cta-secondary">
+              <i class="fas fa-handshake"></i>
+              Contratar Desenvolvedor
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-logo">
+            <div class="logo-icon">
+              <i class="fas fa-cloud"></i>
+            </div>
+            <div class="logo-text">
+              <h3>iCloud Bot</h3>
+              <p>Automação inteligente para comunidades Discord. Desenvolvido com experiência real em gestão de servidores gaming.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Navegação</h4>
+          <ul>
+            <li><a href="#status">Status</a></li>
+            <li><a href="#features">Funcionalidades</a></li>
+            <li><a href="#about">Sobre o Bot</a></li>
+            <li><a href="/pages/sobre.html">Desenvolvedor</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Serviços</h4>
+          <ul>
+            <li><a href="/pages/servicos.html">Contratar Desenvolvedor</a></li>
+            <li><a href="/pages/servicos.html#bots">Desenvolvimento de Bots</a></li>
+            <li><a href="/pages/servicos.html#automacao">Automação de Processos</a></li>
+            <li><a href="/pages/servicos.html#consultoria">Consultoria</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contato</h4>
+          <div class="social-links">
+            <a href="https://discord.com/users/966396759880400986" aria-label="Discord" target="_blank">
+              <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://github.com/meuNobre" aria-label="GitHub" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
+          <p class="contact-info">
+            <i class="fab fa-discord"></i>
+            Discord: 966396759880400986
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 iCloud Bot. Desenvolvido por <strong>Nobre</strong> com ❤️ para comunidades Discord</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="/scripts/script.js"></script>
+</body>
+</html>
